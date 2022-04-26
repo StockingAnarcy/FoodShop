@@ -1,0 +1,24 @@
+﻿@model IEnumerable<FoodShop.Models.Food>
+@{
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+<h3>Выберите блюдо</h3>
+<table>
+<tr>
+<td><p>Название</p></td>
+<td><p>Кол-во</p></td>
+<td><p>Цена</p></td>
+<td></td>
+</tr>
+@foreach (var b in ViewBag.Foods)
+{
+<tr>
+<td><p>@b.Name</p></td>
+<td><p>@b.Count</p></td>
+<td><p>@b.Price</p></td>
+<td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
+</tr>
+}
+</table>
+</div>
