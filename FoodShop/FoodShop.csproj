@@ -7,19 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Web.config" />
+    <Content Remove="App.config" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Web.config" />
+    <None Include="App.config" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.3" />
-    <PackageReference Include="MySql.Data" Version="8.0.29" />
-    <PackageReference Include="MySqlConnector" Version="2.1.8" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
 </Project>

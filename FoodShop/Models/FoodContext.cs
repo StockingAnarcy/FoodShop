@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Data.Entity;
-
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace FoodShop.Models
 {
@@ -9,5 +6,12 @@ namespace FoodShop.Models
     {
         public DbSet<Food> Foods { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
+
+        public FoodContext(DbContextOptions<FoodContext> options)
+            : base(options)
+        {
+            Database.EnsureCreated();
+        }
     }
+
 }

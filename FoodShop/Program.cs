@@ -1,7 +1,10 @@
 using FoodShop.Models;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<FoodContext>(options => options.UseSqlServer("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename = 'E:\\VSPROJECTS\\FOODSHOP\\FOODSHOP\\APP_DATA\\FOODSHOP.MDF';Integrated Security = True;"));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -26,7 +29,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-Database.SetInitializer(new FoodDbInit());
 
 app.Run();

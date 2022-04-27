@@ -1,59 +1,45 @@
-﻿using FoodShop.Models;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using FoodShop.Models;
 
 namespace FoodShop.Controllers
 {
     public class HomeController : Controller
     {
-        
 
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        FoodContext db;
+        public HomeController(FoodContext context)
         {
-            _logger = logger;
+            db = context;
         }
-
-        FoodContext db = new FoodContext();
-
-        public IActionResult Index()
+        
+        public async Task<IActionResult> Index()
         {
-           
-            IEnumerable<Food> foods = db.Foods;
-            
-            ViewBag.Foods = foods;
-           
-            return View();
+
+            return View(await db.Foods.ToListAsync());
         }
 
         [HttpGet]
-        public IActionResult Buy(int id)
+        public IActionResult Buy(int? id)
         {
+            if (id == null) return RedirectToAction("Index");
+
             ViewBag.FoodId = id;
-            
+
             return View();
         }
+
         [HttpPost]
         public string Buy(Purchase purchase)
         {
             purchase.Date = DateTime.Now;
-            
+
             db.Purchases.Add(purchase);
-            
+
             db.SaveChanges();
             return "Спасибо за покупку, " + purchase.Person + "!";
+           
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+    } 
 }

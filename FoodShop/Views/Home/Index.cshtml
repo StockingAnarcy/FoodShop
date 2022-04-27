@@ -11,7 +11,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 <td><p>Цена</p></td>
 <td></td>
 </tr>
-@foreach (var b in ViewBag.Foods)
+@foreach (var b in Model)
 {
 <tr>
 <td><p>@b.Name</p></td>
