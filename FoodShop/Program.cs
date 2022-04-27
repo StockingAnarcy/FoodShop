@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 //string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<FoodContext>(options => options.UseSqlServer("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename = 'E:\\VSPROJECTS\\FOODSHOP\\FOODSHOP\\APP_DATA\\FOODSHOP.MDF';Integrated Security = True;"));
+builder.Services.AddDbContext<FoodContext>(options => options.UseSqlServer("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename = '|DataDirectory|\\APP_DATA\\FOODSHOP.MDF';Integrated Security = True;"));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
