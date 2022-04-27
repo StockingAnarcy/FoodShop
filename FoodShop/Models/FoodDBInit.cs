@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+﻿/*using System.Data.Entity;
 
 
 namespace FoodShop.Models
@@ -57,4 +57,4 @@ namespace FoodShop.Models
 
         }
     }
-}
+}*/
